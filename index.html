@@ -10,6 +10,29 @@
 </head>
 <body>
     <div id="real-main-container">
+        <div id="screen-blackout">
+
+        </div>
+        <div id="upgrade-modal">
+            <h1>Create a new Upgrade</h1>
+            <form id="form">
+                <label for="upgradeName">
+                    Give your upgrade a name
+                </label>
+                <input name="upgradeName" type="text" required>
+                <button id="upgrade-modal-submit" type="submit">Create</button>
+            </form>
+            <div class="upgrade-modal-div">
+                <button onclick="OpenCloseModal()" id="upgrade-modal-close">Cancel</button>
+            </div>
+        </div>
+        <div id="rebirth-modal">
+            <h1>Are you sure you want to rebirth? You will lose all cookies & data, but you'll gain valuable rebirth points.</h1>
+            <div class="rebirth-modal-div">
+                <button onclick="OpenCloseRebirth()" id="rebirth-modal-close">Cancel</button>
+                <button onclick="rebirth()" id="rebirth-modal-submit">Rebirth</button>
+            </div>
+        </div>
         <div id="cookie-container">
             <img id="cookie" src="/images/cookieimg.png" width="500px" height="500px">
         </div>
@@ -17,7 +40,20 @@
             <div id="closeButton">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
             </div>
-            <h1 id="cookies-count">Cookies: <span id="cookies-count-span"> </span></h1>
+            <div id="rebirthShopButton">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+            </div>
+            <h1 id="cookies-count">Cookies:  <span id="cookies-count-span"> </span></h1>
+            <button id="new-upgrade-button" onclick="OpenCloseModal()">Create new upgrade</button>
+
+
+            <h1 id="rebirth-count">Rebirths:  <span id="rebirth-count-span"> </span></h1>
+            <h1 id="rebirth-points-count">Rebirth Points:  <span id="rebirth-points-count-span"> </span></h1>
+            <button id="rebirth-button" onclick="OpenCloseRebirth()">Rebirth [1 Trillion Cookies minimum]</button>
+
+            <div id="rebirth-items-container">
+            </div>
+
             <div id="items-container">
             </div>
         </div>

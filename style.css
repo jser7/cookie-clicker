@@ -32,6 +32,17 @@ body {
     transition: all 1.5s ease;
 }
 
+#rebirth-items-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 20px;
+    transition: all 1.5s ease;
+    display: none;
+}
+
 .item-div{
     border-radius: 18px;
     background-color: rgb(20, 20, 20);
@@ -77,6 +88,40 @@ body {
     background-color: rgb(40,40,40);
 }
 
+#new-upgrade-button, #rebirth-button, #upgrade-modal-close, #upgrade-modal-submit, #rebirth-modal-close, #rebirth-modal-submit {
+    border-radius:12px;
+    padding: 12px;
+    padding-inline: 25px;
+    font-size: larger;
+    border: 0px;
+    background-color: rgb(20,20,20);
+    color:white;
+    cursor: pointer;
+    margin: 15px;
+    transition: 1s ease;
+}
+
+#new-upgrade-button:hover, #rebirth-button:hover, #upgrade-modal-close:hover, #upgrade-modal-submit:hover, #rebirth-modal-close:hover, #rebirth-modal-submit:hover{
+    background-color: rgb(40,40,40);
+}
+
+#upgrade-modal-close, #rebirth-modal-close {
+    background-color: rgb(10, 10, 10);
+    color: red;
+    font-weight: bolder;
+    padding-inline: 80px;
+}
+
+#rebirth-modal-close {
+    padding-inline: 20px;
+}
+
+#upgrade-modal-submit, #rebirth-modal-submit {
+    background-color: rgb(10, 10, 10);
+    color: lime;
+    font-weight: bolder;
+}
+
 p {
     display: block;
     margin-block-start: 0em;
@@ -95,7 +140,8 @@ p {
     align-items: center;
     justify-items: center;
     justify-content: space-around;
-    transition: 1.5s ease
+    transition: 1.5s ease;
+    overflow: hidden;
 }
 
 img {
@@ -115,7 +161,7 @@ img {
     transition: 300ms ease;
 }
 
-#cookies-count {
+#cookies-count, #rebirth-count, #rebirth-points-count {
     color: white;
     font-family: sans-serif;
     margin: 30px;
@@ -126,7 +172,17 @@ img {
 #cookies-count {
     color: palevioletred;
 }
-#cookies-count span {
+
+#rebirth-count, #rebirth-points-count {
+    color: lime;
+    display: none;
+}
+
+#rebirth-points-count {
+    font-weight: lighter;
+}
+
+#cookies-count span, #rebirth-count span, #rebirth-points-count span {
     color: white;
 }
 
@@ -136,7 +192,7 @@ img {
     font-size: 3rem;
     color: palevioletred;
     opacity: 1;
-    transition: transform 1s ease, opacity 1s ease;
+    transition: transform 3s ease, opacity 3s ease;
     user-select: none;
     z-index: 1000;
 }
@@ -150,4 +206,61 @@ img {
     padding: 10px;
     background-color: palevioletred;
     transition: 1.5s ease;
+}
+
+#rebirthShopButton {
+    position:absolute;
+    top: 5em;
+    left: -30px;
+    margin: 5px;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: lime;
+    transition: 1.5s ease;
+}
+
+#upgrade-modal, #rebirth-modal {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: rgb(20,20,20);
+    z-index: 50;
+    border-radius: 12px;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+
+
+.upgrade-modal-div, .rebirth-modal-div {
+    display: flex;
+    justify-content: space-between;
+    gap: 4em;
+    margin: 4em;
+}
+
+#screen-blackout {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+    z-index: 49;
+    display: none;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+#rebirth-button {
+    display: none;
 }
