@@ -1,3 +1,5 @@
+import numeral from 'numeral';
+
 let cookies = 0;
 let multiplier = 1;
 let cps = 0;
@@ -43,7 +45,7 @@ function loadValues(){
     rebirthMultiplier = Number(localStorage.getItem("rebirthMultiplier")) || 0
 
 
-    document.querySelector('#cookies-count-span').textContent = " " + cookies;
+    document.querySelector('#cookies-count-span').textContent = " " + numeral(cookies).format('0.0a');
     document.querySelector('#rebirth-count-span').textContent = " " + rebirths;
     document.querySelector('#rebirth-points-count-span').textContent = " " + rebirthPoints;
 }
@@ -75,7 +77,7 @@ function clearData(){
         };
         setValues()
     }
-clearData()
+// clearData()
 loadValues()
 
 let rebirthItems = {
@@ -183,7 +185,7 @@ function setValues(){
     localStorage.setItem("cps", (cps))
 
 
-    document.querySelector('#cookies-count-span').textContent = ` ${cookies}`;
+    document.querySelector('#cookies-count-span').textContent = ` ${numeral(cookies).format('0.0a')}`;
     document.querySelector('#rebirth-count-span').textContent =  ` ${rebirths}`;
     document.querySelector('#rebirth-points-count-span').textContent = " " + rebirthPoints;
 
