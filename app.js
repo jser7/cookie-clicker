@@ -1,4 +1,3 @@
-import numeral from 'numeral';
 
 let cookies = 0;
 let multiplier = 1;
@@ -32,9 +31,25 @@ let newUpgrades = [];
 let rebirths = 0;
 let rebirthPoints = 0;
 
+// Recursive function to convert number
+function convert(n, suffix = '') {
+    // Suffix array for thousands, millions, billions, etc.
+    let suffixes = ['', 'K', 'M', 'B', 'T', 'Qd', 'Qt', 'Sx', 'St', 'O', 'N', 'D'];
+
+    // Base case: if n is less than 1000, return the number with the suffix
+    if (n < 1000) {
+        return n.toFixed(1) + suffix;
+    }
+
+    // Recursive case: divide the number by 1000 and add the next suffix
+    let index = suffix ? suffixes.indexOf(suffix) + 1 : 1;
+    return convert(n / 1000, suffixes[index]);
+}
+
+
 function loadValues(){
     cookies = Number(localStorage.getItem("cookies")) || 0
-    multiplier = Number(localStorage.getItem("multiplier")) || 1
+    multiplier = 1e28
     cps = Number(localStorage.getItem("cps")) || 0
     upgradeValues = JSON.parse(localStorage.getItem("upgradeValues")) || upgradeValues
     newUpgrades = JSON.parse(localStorage.getItem("newUpgrades")) || newUpgrades
@@ -45,7 +60,7 @@ function loadValues(){
     rebirthMultiplier = Number(localStorage.getItem("rebirthMultiplier")) || 0
 
 
-    document.querySelector('#cookies-count-span').textContent = " " + numeral(cookies).format('0.0a');
+    document.querySelector('#cookies-count-span').textContent = " " + convert(cookies);
     document.querySelector('#rebirth-count-span').textContent = " " + rebirths;
     document.querySelector('#rebirth-points-count-span').textContent = " " + rebirthPoints;
 }
@@ -185,7 +200,7 @@ function setValues(){
     localStorage.setItem("cps", (cps))
 
 
-    document.querySelector('#cookies-count-span').textContent = ` ${numeral(cookies).format('0.0a')}`;
+    document.querySelector('#cookies-count-span').textContent = ` ${convert(cookies)}`;
     document.querySelector('#rebirth-count-span').textContent =  ` ${rebirths}`;
     document.querySelector('#rebirth-points-count-span').textContent = " " + rebirthPoints;
 
